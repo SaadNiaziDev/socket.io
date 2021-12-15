@@ -9,9 +9,11 @@ app.get('/',(req, res)=>{
     res.render("local");
 })
 
+
+//websocket created!!
 io.on('connection', (socket) => {
     console.log("User connected" + socket.id );
-
+//mapping socket with other sockets
     socket.on('message',data =>{
         socket.broadcast.emit('message',data); 
     });

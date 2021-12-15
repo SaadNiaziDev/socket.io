@@ -13,13 +13,17 @@
     <button onclick="sendMessage()">SEND</button>
     <h1></h1>
     <script>
+        //creating socket instance for sending
         const socket = io("http://localhost:3000");
         socket.on('connection');
+        //mapping socket
         socket.on('message',(data) => {
             document.querySelector('h1').innerHTML = data;
         })
+        //sendMessage function
         const sendMessage = () => {
             const message = document.querySelector('.message').value;
+            //this will send the message
             socket.emit('message',message)
         }
     </script>
